@@ -24,12 +24,10 @@ class SplashActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.setStatusBarColor(Color.TRANSPARENT)
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
-
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
         getWindow().exitTransition = Explode()
         setTheme(R.style.Theme_AppCompat_NoActionBar)
@@ -37,7 +35,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         viewModel =
             ViewModelProviders.of(this).get(SplashViewModel::class.java)
-        Handler().postDelayed(Runnable {
+        Handler().postDelayed({
             viewModel.checkToken()
             viewModel.getAuthResultLiveData().observe(this, Observer { result ->
                 val i: Intent = if (result) {
@@ -47,7 +45,6 @@ class SplashActivity : AppCompatActivity() {
                 }
                 startActivity(i)
             })
-        }, 1000)
-
+        }, 500)
     }
 }

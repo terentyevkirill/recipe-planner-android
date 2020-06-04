@@ -1,13 +1,11 @@
 package com.terentiev.recipeplanner.ui.calendar
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.terentiev.recipeplanner.RecipePlanner
 
 class CalendarViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is calendar Fragment"
+    fun logout() {
+        RecipePlanner.instance.setUserToken("")
+        RecipePlanner.instance.setUsername("")
     }
-    val text: LiveData<String> = _text
 }

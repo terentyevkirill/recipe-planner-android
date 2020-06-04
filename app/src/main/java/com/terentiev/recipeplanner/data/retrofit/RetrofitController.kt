@@ -57,6 +57,8 @@ class RetrofitController {
                         authResult.postValue(true)
                     } else {
                         Log.d("RetrofitController", "Not Authenticated: illegal token")
+                        RecipePlanner.instance.setUserToken("")
+                        RecipePlanner.instance.setUsername("")
                         authResult.postValue(false)
                     }
                 }

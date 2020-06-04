@@ -3,7 +3,6 @@ package com.terentiev.recipeplanner
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 
 class RecipePlanner : Application() {
 
@@ -19,7 +18,6 @@ class RecipePlanner : Application() {
         super.onCreate()
         instance = this
         preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
-//        setUserToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTkxMjY4MDczfQ.DDrCNpCR-PBs0uqg8YqEL61BnrE0EioZoJ4kCF-LvIY")
     }
 
     fun getUserToken() = preferences.getString(USER_TOKEN, "")
@@ -33,6 +31,4 @@ class RecipePlanner : Application() {
     fun setUsername(username: String) {
         preferences.edit().putString(USER_NAME, username).apply()
     }
-
-
 }

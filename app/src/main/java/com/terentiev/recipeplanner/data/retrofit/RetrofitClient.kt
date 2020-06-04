@@ -4,7 +4,6 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface RetrofitClient {
-
     @POST("/users/login")
     suspend fun login(@Body request: AuthRequest): Response<AuthResponse>
 
@@ -13,5 +12,4 @@ interface RetrofitClient {
 
     @GET("/users/auth")
     suspend fun checkToken(@Header("Authorization") token: String): Response<Void>
-
 }

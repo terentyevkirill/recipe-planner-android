@@ -18,15 +18,12 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_login)
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-
         sign_in.setOnClickListener {
             loading.visibility = View.VISIBLE
             viewModel.loginAttempt(username.text.toString(), password.text.toString())
         }
-
         viewModel.getLoginResultLiveData().observe(this, Observer { result ->
             loading.visibility = View.GONE
             if (result) {

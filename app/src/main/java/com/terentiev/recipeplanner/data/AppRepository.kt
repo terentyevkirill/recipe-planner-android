@@ -6,7 +6,13 @@ import com.terentiev.recipeplanner.data.retrofit.RetrofitController
 class AppRepository {
 
     companion object {
-        fun getInstance() = AppRepository()
+        private var instance: AppRepository? = null
+        fun getInstance(): AppRepository {
+            if (instance == null) {
+                instance = AppRepository()
+            }
+            return instance as AppRepository
+        }
     }
 
     private var retrofit: RetrofitController = RetrofitController()
