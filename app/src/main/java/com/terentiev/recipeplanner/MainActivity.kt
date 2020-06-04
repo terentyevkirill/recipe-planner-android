@@ -3,6 +3,7 @@ package com.terentiev.recipeplanner
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -44,5 +45,7 @@ class MainActivity : AppCompatActivity() {
 //                navView.visibility = View.VISIBLE
 //            }
 //        }
+
+        Toast.makeText(this, "Welcome, ${RecipePlanner.instance.getUsername()}!", Toast.LENGTH_SHORT).show()
     }
 }

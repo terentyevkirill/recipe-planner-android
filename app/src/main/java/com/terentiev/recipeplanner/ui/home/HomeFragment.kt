@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.terentiev.recipeplanner.R
+import com.terentiev.recipeplanner.RecipePlanner
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
@@ -27,5 +29,13 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val sb = StringBuilder("Authenticated\n\n")
+        sb.append("Username:\n").append(RecipePlanner.instance.getUsername()).append("\n\n")
+        sb.append("Token:\n").append(RecipePlanner.instance.getUserToken()).append("\n")
+        welcome.text = sb.toString()
     }
 }
